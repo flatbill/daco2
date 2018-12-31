@@ -1,0 +1,230 @@
+<div class="dacoSpaHeader1 flexbox-container" >
+  <span class="dacoSpaHeader2"> Date Code Format  &nbsp; &nbsp;  </span>
+  <span class="msg"> {{myMsg}}  </span> 
+  <span class="itemSearch ">
+    <span class="font1"> Item: &nbsp; </span>
+    <input type='text' size=8 [(ngModel)]="itemToSearchFor"  >
+    <!--  #ctrl="ngModel" <-- dont know what this does -->
+    &nbsp;
+    <span type='button' class = ' font1 btn btn-md '   (click)='onItemSearchClick()' >
+      Search
+    </span>
+  </span>
+</div>
+<div class="xli-div" id="xlArea1"> 
+    
+          <!-- &nbsp; &nbsp; &nbsp; {{myXlHdgMsg}}  and bla -->
+          <label for="xlInputFileHtmlId" class="font1 btn btn-md">Import from XL </label>             
+          <input type="file" (change)="onHtmlInputFileChange($event)"               
+                 multiple="false" 
+                 accept=".csv, .xls, .xlsx" 
+                 class='btn hide-sometimes'
+                 id='xlInputFileHtmlId'          
+          />  
+          <!-- btn-block ? -->
+           
+</div>
+
+<div class="flexbox-container">
+  <div class="cc-div">
+    <div class=box0>
+      <span class=font2>Content</span> 
+      <span class=msg> &nbsp; &nbsp;  &nbsp;  {{dragHelpMsg}} &nbsp; </span>
+      <span class= msg id=dragHelpMsgRightArrow>&rarr;                </span>
+    </div> 
+    
+    <ul class=cc-ul>
+      <li  
+             *ngFor="let cc of contentChoiceArray1"
+              mwlDraggable 
+              type="button" class="cc-li btn btn-default btn-md btn-block  "
+              (click)="but2Clicked(cc,$event)"
+              (dragEnd)="dragEnd2(cc,$event)"
+              > 
+              {{cc.contentName}} 
+      </li>
+    </ul>
+  </div>
+  <div class="pg-div">
+    <!-- <h5 class=box1> &nbsp; Product Grid </h5> -->
+    <div class=box0>
+      <span class=font2> &nbsp; Product Grid </span>
+    </div>
+    <span 
+      mwlDroppable
+      (drop)="onDrop20()" 
+      (contextmenu)='onPg0ContainerRightClick()' 
+      type="button"
+      class=" pg0-container btn btn-default "
+      dragOverClass="drop-over-active"       
+      >
+        {{pg0Heading}}
+      
+      <ul>
+        <li *ngFor="let pg0 of productGridArray0"
+          (click)='onPg0Click(pg0)' 
+          (contextmenu)= 'onPg0RightClick(pg0)'                            
+          type="button" 
+          class="pg0-li btn btn-default "          
+          dragOverClass="drop-over-active"
+        >
+        {{pg0.pgContentShow}}
+        </li>
+      </ul>  
+    </span>
+    <p>
+      <span class= msg id=dropHelpMsgDownArrow1>&nbsp; &darr; &nbsp; </span>
+      <span class= msg>{{pg1HelpMsg}}</span>
+      <span class= msg id=dropHelpMsgDownArrow2>&nbsp; &darr;</span>
+    </p>
+      <!-- <h6 class="pg-hdr">&nbsp; &darr; {{pgHelpMsg}}  &darr; </h6> -->
+      <ul>                         
+        <li *ngFor="let pg of productGridArray1" 
+          mwlDroppable 
+          (drop)="onDrop10(pg)"  
+          (click)='onPgClick(pg)' 
+          (contextmenu)= 'onPgRightClick(pg)'                            
+          type="button" 
+          class="pg-li btn btn-default "          
+          dragOverClass="drop-over-active"           
+        >
+          {{pg.pgContentShow}}
+        </li> 
+      </ul>
+  </div> 
+  <div class="df-div">
+    <div class=box0>
+        <span class=font2>Format Info</span> 
+        <span class=msg> &nbsp; {{dfHelpMsg}} &nbsp; </span>
+    </div>     
+    <div class='box2 klikkish accordionTrigger'   (click)="accordionToggle('df',$event)" id='df' >
+      <span class="fa fa-plus w3-show accordionTrigger"   >        </span> 
+      <span class="fa fa-minus w3-hide accordionTrigger"  >        </span> 
+      <span class='font1 accordionTrigger'>  Format List          </span> 
+      <ul class="list-group scrolling-wrapper-flexbox w3-hide" > 
+        <li *ngFor="let df of dateCodeFormatArray1" 
+          class="list-group-item list-group-item-info  klikkish"
+          (click)='onDfClick(df)' 
+          (contextmenu)='onDfRightClick(df)'
+        >
+          {{df.dfFormatKey}}
+          {{df.dfFormatName}}
+          <!-- {{df.dfFilterInOut}} -->
+        </li> 
+      </ul>
+      </div>
+      <div class='box2 klikkish accordionTrigger'   (click)="accordionToggle('fd',$event)" id='fd' >
+        <span class="fa fa-plus w3-show accordionTrigger"   >        </span> 
+        <span class="fa fa-minus w3-hide accordionTrigger"  >        </span> 
+        <span class='font1 accordionTrigger'>  Format Detail        </span> 
+        <ul class="list-group scrolling-wrapper-flexbox w3-hide"  > 
+        <!-- Format Detail -->             
+          <li *ngFor="let fd of formatDetailArray1" 
+          class="list-group-item list-group-item-info"
+          >               
+                      {{fd.fdFormatKey}}
+            Row       {{fd.fdRow}}
+            Slot      {{fd.fdRowSlot}}
+                      {{fd.fdContentName}}   
+                      {{fd.fdMask}}
+          </li> 
+        </ul>  
+      </div>
+      <div class='box2 klikkish accordionTrigger '   (click)="accordionToggle('sf',$event)" id='sf' > 
+        <span class="fa fa-plus w3-show accordionTrigger"   >       </span> 
+        <span class="fa fa-minus w3-hide accordionTrigger"  >        </span> 
+        <span class='font1 accordionTrigger'>  Items Layers Formats  </span>
+        <ul class="list-group scrolling-wrapper-flexbox  w3-hide"  > 
+          <!-- Items  Layers  Formats --> 
+          <li  class="list-group-item list-group-item-primary" > Item Layer Format </li>          
+          <li *ngFor="let sf of skuFormatArray1" 
+          class="list-group-item list-group-item-info"
+        >              
+            {{sf.sfSku}}  
+            {{sf.sfLayer}}
+            {{sf.sfFormatKey}}
+          </li> 
+        </ul> 
+      </div> 
+
+      <div class='box2 klikkish accordionTrigger '   (click)="accordionToggle('fl',$event)" id='fl' > 
+        <span class="fa fa-plus w3-show accordionTrigger"   >  </span> 
+        <span class="fa fa-minus w3-hide accordionTrigger"  >  </span> 
+        <span class='font1 accordionTrigger'>  Text          </span>
+        <ul class="list-group scrolling-wrapper-flexbox w3-hide" > 
+          <li  class="list-group-item list-group-item-primary" > Text Literals in Formats </li>          
+          <li *ngFor="let fl of formatLiteralArray0"  
+            class="list-group-item list-group-item-info"  >            
+            {{fl.flText}}
+          </li> 
+        </ul> 
+      </div>
+      <div class='box2 klikkish accordionTrigger'   (click)="accordionToggle('fm',$event)" id='fm' >
+        <span class="fa fa-plus w3-show accordionTrigger"   >  </span> 
+        <span class="fa fa-minus w3-hide accordionTrigger"  >  </span> 
+        <span class='font1 accordionTrigger'>  Masks        </span>
+        <ul class="list-group scrolling-wrapper-flexbox w3-hide" > 
+          <li  class="list-group-item list-group-item-primary" > Masks for Dates and Lot Nbr   </li>          
+          <li *ngFor="let fm of formatMaskArray0" 
+            class="list-group-item list-group-item-info"          
+          >            
+            {{fm.fmMask}}
+          </li> 
+        </ul> 
+      </div> <!-- masks list -->
+  </div> 
+</div> <!-- flexbox-container for cc and pg -->
+<!-- ///////////////////////////////////////////// -->
+<div id="myModal1" class="modal1">
+   <div class="modal1-content"> 
+     <div class="flexbox-container box2 ">  
+      <span class="modal1-message-left "> &nbsp; {{myModal1Msg1}} </span> 
+      <span class="modal1-message-right ">&nbsp; {{myModal1Msg2}}</span>
+      <span class="closerX klikkish">&times;</span> 
+    </div>
+      <br>
+      <div class="flexbox-container">
+        <div class="modal1-content-left"> 
+          <ul > 
+            <li *ngFor="let fc of formatComposeArray0"  >
+              &nbsp; {{fc.fcPart1}}
+            </li> 
+          </ul>
+        </div>   <!-- modal1-content-left -->
+  
+        <div class="modal1-content-right">
+          <ul>
+            <li  *ngFor="let fc of formatComposeArray0"  >
+                &nbsp; {{fc.fcPart2}}
+            </li>
+          </ul>
+        </div>  <!-- modal1-content-right -->
+      </div>  <!-- modal1-content-->
+  </div>
+</div>
+<!-- ///////////////////////////////////////////// -->
+<div id="myModal2" class="modal1">
+    <div class="modal1-content"> 
+      <div class="flexbox-container box2">  
+       <span class="modal1-message-left">{{myModal1Msg1}} </span> 
+       <span class="modal1-message-right">Rows and Slots </span>
+       <span class="closerX klikkish">&times;</span> 
+      </div>
+      <br>
+      <div>
+       <ul class="list-group"> 
+            Format Detail             
+            <li *ngFor="let fd of formatDetailArray1" 
+              class="list-group-item list-group-item-info"
+            >               
+                        {{fd.fdFormatKey}}
+              Row       {{fd.fdRow}}
+              Slot      {{fd.fdRowSlot}}
+                        {{fd.fdContentName}}   
+                        {{fd.fdMask}}
+            </li> 
+      </ul> 
+          
+       </div>  
+   </div>  <!-- modal1-content-->
+ </div>
