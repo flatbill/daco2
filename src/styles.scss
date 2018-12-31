@@ -1,0 +1,242 @@
+/* Selzer June2018 styling for daco app
+/* two column layout */
+
+.dacoSpaHeader1{
+	background-color: #3c7570;
+	width: 100%;
+}
+.dacoSpaHeader2{
+	font-size: 2.2em;
+}
+.msg {
+	color: yellow;
+	align-self: flex-end;
+	flex-grow: 1;
+  }
+.itemSearch{
+	align-self: flex-end;
+	margin-right: 5px;
+}
+  
+.box0{	
+	border-style: solid;
+	border-width: thin;
+	border-color: rgb(37, 151, 136);
+}
+.box1{
+	font-weight: bold;
+	border-style: solid;
+	border-width: thin;
+	border-color: rgb(37, 151, 136);
+}
+.box2{
+	font-weight: 400;
+	border-style: solid;
+	border-width: thin;
+	border-color: rgb(37, 151, 136);
+}
+
+.flexbox-container {
+	//display: -ms-flex;
+	//display: -webkit-flex;
+	display: flex;
+	// flex-direction: row;
+}
+
+.flexbox-container > div {
+	width:50%
+}
+
+ul{
+	list-style-type:none;
+	padding-left: 0;	
+  } 
+
+.flexbox-container > ul {
+	padding: 4px;
+	display: flex;
+    font-size: 0;
+    flex-wrap:wrap;
+	margin:-10px 0 0 -10px;
+	padding-left: 0;
+	 
+}
+.cc-ul {padding-left: 1rem; padding-right: 1rem;}
+
+.cc-li{
+	text-transform: none;  } //overRide .btn uppercase
+
+.pg-hdr{
+	margin: 10px 0px 0px 0px;
+}
+.pg-li { 	
+	display: inline-block;
+    margin: 1px 0 0 1px;
+    flex-grow: 1;
+    height:100px;    
+	width: calc(100% * (1/4) - 10px - 1px);
+	padding-left: 0;
+	font-size: calc(.5vw + .5vh + .5vmin);
+	text-transform: none; //overRide .btn uppercase
+}
+.pg-div {
+    height: 110vh; 
+	background-color: #41837c;
+	position: -webkit-sticky; 
+	position: sticky; 
+	top: 0; /* required */
+	} 
+	
+.pg0-container{
+	width:90% ;
+	text-transform: none; 
+}
+.pg0-li{	
+	display: inline-block;
+    margin: 1px 0 0 1px;
+    flex-grow: 1;
+    height:65px;    
+	width: calc(100% * (1/3) - 10px - 1px);
+	padding-left: 0;
+	font-size: calc(.5vw + .5vh + .5vmin);
+	text-transform: none; //overRide .btn uppercase
+}
+
+.cc-div {
+	background-color: #3e6d68;
+  }
+
+.df-div {
+	background-color: #3c7570;    
+  }
+
+.xli-div {
+	background-color: #4c867f;
+}
+
+/* .flexbox-container > div:first-child {
+	background-color: #105a51;
+	margin-right: 7px;
+} */
+
+
+.hide-sometimes{
+  display: none;
+}
+
+[mwlDraggable] {
+	/* background-color: rgb(0, 110, 255);
+	width: 50px;
+	height: 50px; */
+	position: relative;
+	z-index: 2;
+	float: left;
+	/* margin-right: 10px; */
+	cursor: move;
+}
+
+[mwlDroppable] {
+	/* background-color: green;
+	width: 100px;
+	height: 100px; */
+	z-index: 1;
+	position: relative;
+	top: 10px;
+	left: 10px;
+}
+
+.drop-over-active {
+	border: dashed 4px black;
+	background-color: lightgreen;  /* overRidden  by MdBOot somewhere */
+}
+
+.scrolling-wrapper-flexbox {
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-y: auto;
+	height: 070vh;
+	width: 100%;	
+	.li {
+	  flex: 0 0 auto;
+	  margin-right: 0px;
+	}
+  }
+
+/* The Modal (background) */
+.modal1 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 11; /* Sit on top ... why does 11 work and not 1 ?*/  
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal1-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* mostly fills the web page*/
+}
+.modal1-content-left{
+	top: 0;
+	background-color: #deececfb;
+	width: 50%;
+}
+.modal1-content-right{	
+	background-color: #c5d3d3;
+	width: 50%;
+}
+.modal1-message-left{
+	background-color: #8ed4d4;
+	width: 49%;
+}
+.modal1-message-right{
+	float: right;
+	background-color: #a1d4d4;
+	width: 49%;
+}
+
+/* The Close Button */
+.closerX {
+    color: rgb(59, 58, 58);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.closerX:hover, 
+.closerX:focus {
+	color: black;
+	background-color: red;
+    text-decoration: none;
+    
+}
+
+/* .klikkish{
+ color: black;
+} */
+ 
+.klikkish:hover {  /* filter only works for chrome */
+	cursor: pointer;
+	filter: brightness(110%);
+}
+.w3-show{display:inline!important}
+.w3-hide{display:none!important}
+
+.billytest{
+	display: inline-block;
+}
+
+.font1{ font-size: 1.25rem; line-height: 1.2;
+	text-transform: none; }
+
+.font2{ font-size: 1.25rem; 
+	line-height: 1.2;
+	font-weight: bold;
+	text-transform: none; }
